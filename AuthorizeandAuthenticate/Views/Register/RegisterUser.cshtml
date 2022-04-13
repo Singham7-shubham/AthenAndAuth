@@ -1,0 +1,100 @@
+﻿@using AuthorizeandAuthenticate.Models
+@model AuthorizeandAuthenticate.Models.UserModel
+@{
+    ViewBag.Title = "RegisterUser";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <style>
+        .field-validation-error
+        {
+            color:red;
+        }
+    </style>
+
+</head>
+<body>
+    <h2 style="color:green;margin-top:60px;text-align:center">Registration Page</h2>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+           @using (Html.BeginForm("RegisterUser", "Register", FormMethod.Post))
+            {
+                <div style="background-color:lavender;border:2px solid groove;border-collapse:collapse">
+                    <table style="border:2px solid ;border-color:blanchedalmond;border-collapse:collapse">
+                        <tr>
+                            <td class="form-control" style="text-align:right;font-size:larger;font-weight:bold">
+                                @Html.LabelFor(model => model.UserName)
+                            </td>
+                            <td class="col-lg-5">
+                                <div id="Username">
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.UserName)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="form-control" style="text-align:right;font-size:larger;font-weight:bold">
+                                @Html.LabelFor(model => model.Role)
+                            </td>
+                            <td class="col-lg-5">
+                                <div id="UserRole">
+                                    @Html.TextBoxFor(model => model.Role, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Role)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="form-control" style="text-align:right;font-size:larger;font-weight:bold">
+                                @Html.LabelFor(model => model.UserEmail)
+                            </td>
+                            <td class="col-lg-5">
+                                <div id="UserEmail">
+                                @Html.TextBoxFor(model => model.UserEmail,new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.UserEmail)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="form-control" style="text-align:right;font-size:larger;font-weight:bold">
+                                @Html.LabelFor(model => model.UserPassword)
+                            </td>
+                            <td class="col-lg-5">
+                                <div id="UserPassword">
+                                    @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.UserPassword)
+                            </td>
+                        </tr>
+                        <tr style="text-align:center">
+                            <td colspan="2">
+                                @Html.DisplayFor(model => model.LoginErrorMessage, new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" class="col-lg-1">
+                                <input type="submit" class="btn btn-primary" name="X" value="Register" />
+                            </td>
+
+                            <td class="col-lg-5">
+                                @Html.ActionLink("Already a User? Click here to Login", "Login", "Login")
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿@using AuthorizeandAuthenticate.Models
+
+@model AuthorizeandAuthenticate.Models.UserModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/Scripts/jquery-3.3.1.js"> </script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+</head>
+
+<body>
+    <h2 style="color:green;margin-top:60px;text-align:center"> Welcome to Employee Login Page</h2>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div id="login-div" style="background-color:lavender;border:2px solid groove">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                  <table>
+                      <tr>
+                          <td class="form-control" style="text-align:right;font-size:larger;font-weight:bold">
+                              @Html.LabelFor(model => model.UserEmail)
+                          </td>
+                          <td>
+                              @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control" })
+                          </td>
+                        
+                      </tr>
+                      <tr>
+                          <td></td>
+                          <td>
+                              @Html.ValidationMessageFor(Model => Model.UserEmail)
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="form-control" style="text-align:right;font-size:larger;font-weight:bold">
+                              @Html.LabelFor(model => model.UserPassword)
+                          </td>
+                          <td>
+                              @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control" })
+                          </td>
+                         
+                      </tr>
+                      <tr>
+                          <td></td>
+                          
+                          <td>
+                              @Html.ValidationMessageFor(model => model.UserPassword)
+                          </td>
+                          
+                      </tr>
+                  
+                      <tr>
+                          <td>
+                  
+                          </td>
+                          <td>
+                              <label id="lbl_AuthError" class="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <input type="submit" class="btn-block btn-success" value="Login" id="Submit"/>
+                          </td>
+                      </tr>
+                  </table>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
